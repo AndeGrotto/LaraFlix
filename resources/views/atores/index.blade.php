@@ -1,23 +1,34 @@
-@extends('adminlte::page')
+@extends('layouts.default')
 
 @section('content')
-<h1>Atores</h1>
-<table class="table table-stripe table-bordered table-hover">
-    <thead>
-        <th>Nome</th>
-        <th>Nacionalidade</th>
-        <th>Data de Nascimento</th>
-        <th>Início das Atividades</th>
-    </thead>
-    <tbody>
-        @foreach($atores as $ator)
-            <tr>
-                <td>{{ $ator->nome }}</td>
-                <td>{{ $ator->nacionalidade }}</td>
-                <td>{{ $ator->dt_nascimento }}</td>
-                <td>{{ $ator->inicio_atividades }}</td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+    <h1>Atores</h1>
+    <table class="table table-stripe table-bordered table-hover">
+        <thead>
+            <th>Nome</th>
+            <th>Nacionalidade</th>
+            <th>Data de Nascimento</th>
+            <th>Início das Atividades</th>
+            <th>Ações</th>
+        </thead>
+        <tbody>
+            @foreach ($atores as $ator)
+                <tr>
+                    <td>{{ $ator->nome }}</td>
+                    <td>{{ $ator->nacionalidade }}</td>
+                    <td>{{ Carbon\Carbon::parse($ator->dt_nascimento)->format('d/m/Y') }}</td>
+                    <td>{{ Carbon\Carbon::parse($ator->inicio_atividades)->format('d/m/Y') }}</td>
+                    <td>
+                        <a href="{{ route('atores.edit', ['id' => $ator->id]) }}" class="btn-sm btn-success">Editar</a>
+                        <a href="#" onclick="return ConfirmaExclusao({{$ator->id}})" class="btn-sm btn-danger">Remover</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <a href="{{ route('atores.create', []) }}" class="btn-sm btn-primary">Adicionar</a>
+
 @stop
+@section('table-delete')
+"atores"
+@endsection
