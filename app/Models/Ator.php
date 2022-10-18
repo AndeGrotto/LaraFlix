@@ -10,7 +10,11 @@ class Ator extends Model
     use HasFactory;
 
     protected $table = "atores";
-    protected $fillable = ['nome', 'nacionalidade', 'dt_nascimento', 'inicio_atividades'];
+    protected $fillable = ['nome', 'nacionalidade_id', 'dt_nascimento', 'inicio_atividades'];
+
+    public function nacionalidade() {
+        return $this->belongsTo("App\Models\Nacionalidade");
+    }
 
 }
 

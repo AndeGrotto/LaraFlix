@@ -292,16 +292,15 @@ return [
     'menu' => [ 
         ['header' => 'ATORES'],
         [
-            'text' => 'Listagem',
+            'text' => 'Atores',
             'url'  => 'atores',
             'icon' => 'fas fa-fw fa-users',
         ],
         [
-            'text' => 'Criar',
-            'url'  => 'atores/create',
-            'icon' => 'fas fa-fw fa-plus',
+            'text' => 'Nacionalidades',
+            'url'  => 'nacionalidades',
+            'icon' => 'fas fa-fw fa-flag',
         ],
-        
     ],
 
     /*

@@ -23,6 +23,14 @@
         {!! Form::select('nacionalidade', 
                         array('BRA'=>'Brasileiro',
                               'USA'=>'Americano',
+                              'DK'=>'Dinamarquês',
+                              'ALE'=>'Alemão',
+                              'JAP'=>'Japonês',
+                              'PT'=>'Português',
+                              'SA'=>'Árabe',
+                              'RUS'=>'Russo',
+                              'MEX'=>'Mexicano',
+                              'ESP'=>'Espanhol',
                               'CAN'=>'Canadense',
                               'ARG'=>'Argentino'),
                               $ator->nacionalidade, ['class'=>'form-control', 'required']) !!}
@@ -40,7 +48,9 @@
 
     <div class="form-group">
         {!! Form::submit('Editar Ator', ['class'=>'btn btn-primary']) !!}
-        {!! Form::reset('Limpar', ['class' => 'btn btn-default']) !!}
+        {!! Form::reset('Limpar', ['class' => 'btn btn-danger']) !!}
+        <a href="{{ route('atores') }}"
+            class="btn btn-default">Voltar</a>
     </div>
 
     {!! Form::close() !!}

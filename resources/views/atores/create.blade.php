@@ -3,15 +3,15 @@
 @section('content')
     <h3>Novo Ator</h3>
 
-    @if($errors->any())
+    @if ($errors->any())
         <ul class="alert alert-danger">
-            @foreach($errors->all() as $error)
+            @foreach ($errors->all() as $error)
                 <li> {{ $error }} </li>
             @endforeach
         </ul>
     @endif
 
-    {!! Form::open(['route'=>'atores.store']) !!}
+    {!! Form::open(['route' => 'atores.store']) !!}
 
     <div class="form-group">
         {!! Form::label('nome', 'Nome:') !!}
@@ -19,13 +19,13 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('nacionalidade', 'Nacionalidade:') !!}
-        {!! Form::select('nacionalidade', 
-                        array('BRA'=>'Brasileiro',
-                              'USA'=>'Americano',
-                              'CAN'=>'Canadense',
-                              'ARG'=>'Argentino'),
-                              'BRA', ['class'=>'form-control', 'required']) !!}
+        {!! Form::label('nacionalidade_id', 'Nacionalidade:') !!}
+        {!! Form::select(
+            'nacionalidade_id',
+            \App\Models\Nacionalidade::orderBy('descricao')->pluck('descricao', 'id')->toArray(),
+            null,
+            ['class' => 'form-control', 'required'],
+        ) !!}
     </div>
 
     <div class="form-group">
@@ -39,7 +39,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Criar Ator', ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Criar Ator', ['class' => 'btn btn-primary']) !!}
         {!! Form::reset('Limpar', ['class' => 'btn btn-default']) !!}
     </div>
 

@@ -8,7 +8,7 @@ use App\Http\Requests\AtorRequest;
 class AtoresController extends Controller
 {
     public function index() {
-        $atores = Ator::all();
+        $atores = Ator::orderBy('nome')->paginate(5);
         return view('atores.index', ['atores'=>$atores]);
     }
 

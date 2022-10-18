@@ -14,7 +14,7 @@
             @foreach ($atores as $ator)
                 <tr>
                     <td>{{ $ator->nome }}</td>
-                    <td>{{ $ator->nacionalidade }}</td>
+                    <td>{{ isset($ator->nacionalidade->descricao) ? $ator->nacionalidade->descricao : "Nacionalidade não informada" }}</td>
                     <td>{{ Carbon\Carbon::parse($ator->dt_nascimento)->format('d/m/Y') }}</td>
                     <td>{{ Carbon\Carbon::parse($ator->inicio_atividades)->format('d/m/Y') }}</td>
                     <td>
@@ -26,7 +26,9 @@
         </tbody>
     </table>
 
-    <a href="{{ route('atores.create', []) }}" class="btn-sm btn-primary">Adicionar</a>
+    {{ $atores->links("pagination::bootstrap-4") }}
+
+    <a href="{{ route('atores.create', []) }}" class="btn btn-primary">Adicionar</a>
 
 @stop
 @section('table-delete')
